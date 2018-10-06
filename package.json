@@ -1,0 +1,31 @@
+{
+  "name": "salary-summary",
+  "version": "1.0.0",
+  "description": "A simple web app to control your salary",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mendezdev/salary-summary.git"
+  },
+  "keywords": [
+    "salary"
+  ],
+  "author": "Pablo Mendez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mendezdev/salary-summary/issues"
+  },
+  "homepage": "https://github.com/mendezdev/salary-summary#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "http-status": "^1.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.1"
+  }
+}
