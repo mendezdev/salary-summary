@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose, { Types }  = require('mongoose');
 
 const spenderGroupSchema = mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
+  _id: Types.ObjectId,
   name: {
     type: String,
     maxLength: 40,
@@ -10,7 +10,7 @@ const spenderGroupSchema = mongoose.Schema({
   },
   spenders: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Types.ObjectId,
       ref: 'User'
     }
   ]
