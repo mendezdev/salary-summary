@@ -11,11 +11,20 @@ const accountSchema = mongoose.Schema({
     required: true,
     unique: true
   },
-  spenderGroup: {
-    type: Types.ObjectId,
-    ref: 'SpenderGroup',
-    required: true
-  }
+  spenders: [
+    {
+      information: {
+        type: Types.ObjectId,
+        ref: 'User'
+      }
+    }
+  ],
+  expenses: [
+    {
+      type: Types.ObjectId,
+      ref: 'Expense'
+    }
+  ]
 });
 
 module.exports = mongoose.model('Account', accountSchema);

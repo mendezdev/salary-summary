@@ -11,21 +11,6 @@ const expenseSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: Date,
-  isActive: Boolean,
-  date: {
-    type: Date,
-    required: true
-  },
-  accountId: {
-    type: Types.ObjectId,
-    ref: 'Account',
-    required: true
-  },
   userInformation: {
     email: {
       type: String,
@@ -37,6 +22,6 @@ const expenseSchema = mongoose.Schema({
     },
     required: true
   }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Expense', expenseSchema);
