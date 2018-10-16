@@ -2,7 +2,7 @@ const mongoose, { Types } = require('mongoose');
 
 const accountSchema = mongoose.Schema({
   _id: Types.ObjectId,
-  ammount: {
+  amount: {
     type: Number,
     default: 0
   },
@@ -13,10 +13,8 @@ const accountSchema = mongoose.Schema({
   },
   spenders: [
     {
-      information: {
-        type: Types.ObjectId,
-        ref: 'User'
-      }
+      type: Types.ObjectId,
+      ref: 'User'
     }
   ],
   expenses: [

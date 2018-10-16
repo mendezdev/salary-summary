@@ -2,7 +2,7 @@ const mongoose, { Types } = require('mongoose');
 
 const expenseSchema = mongoose.Schema({
   _id: Types.ObjectId,
-  ammount: {
+  amount: {
     type: Number,
     min: [0, 'The value must be bigger than zero'],
     required: true
