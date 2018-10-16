@@ -29,12 +29,6 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('/helloworld', (req, res) => {
-	res.status(OK).json({
-		message: 'This is the hello world test!'
-	});
-});
-
 app.use('/users', userRoutes);
 
 app.use((req, res, next) => {

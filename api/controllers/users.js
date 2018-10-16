@@ -50,11 +50,6 @@ exports.signin = async (req, res) => {
     );
 
     return res.status(OK).json({
-      message: 'Token creado',
-      user: {
-        username: user.username,
-        email: user.email
-      },
       token
     });
   } catch (error) {
