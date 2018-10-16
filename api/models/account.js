@@ -1,7 +1,7 @@
-const mongoose, { Types } = require('mongoose');
+const mongoose = require('mongoose');
 
 const accountSchema = mongoose.Schema({
-  _id: Types.ObjectId,
+  _id: mongoose.Schema.Types.ObjectId,
   amount: {
     type: Number,
     default: 0
@@ -13,13 +13,13 @@ const accountSchema = mongoose.Schema({
   },
   spenders: [
     {
-      type: Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     }
   ],
   expenses: [
     {
-      type: Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Expense'
     }
   ]

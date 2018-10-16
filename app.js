@@ -6,6 +6,7 @@ const { INTERNAL_SERVER_ERROR, NOT_FOUND, OK } = require('http-status');
 require('dotenv').config();
 
 const userRoutes = require('./api/routes/user');
+const accountRoutes = require('./api/routes/account');
 
 mongoose.connect(
 	process.env.MONGO_URL,
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/users', userRoutes);
+app.use('/accounts', accountRoutes);
 
 app.use((req, res, next) => {
 	const error = new Error('Not found');
