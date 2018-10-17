@@ -6,7 +6,7 @@ exports.getAll = () => {
 }
 
 exports.getById = (id) => {
-  return Account.findOne({ id }).exec();
+  return Account.findOne({ _id: id }).exec();
 }
 
 exports.create = accountData => {
