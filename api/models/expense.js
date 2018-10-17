@@ -1,7 +1,7 @@
-const mongoose, { Types } = require('mongoose');
+const mongoose = require('mongoose');
 
 const expenseSchema = mongoose.Schema({
-  _id: Types.ObjectId,
+  _id: mongoose.Schema.Types.ObjectId,
   amount: {
     type: Number,
     min: [0, 'The value must be bigger than zero'],
@@ -19,7 +19,11 @@ const expenseSchema = mongoose.Schema({
     username: {
       type: String,
       required: true
-    },
+    }
+  },
+  accountId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Account',
     required: true
   }
 }, { timestamps: true });
