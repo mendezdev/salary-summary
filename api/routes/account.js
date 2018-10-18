@@ -4,6 +4,7 @@ const AccountController = require('../controllers/accounts');
 
 router.get('/', AccountController.get);
 router.get('/:id', AccountController.getById);
+router.put('/:id', AccountController.update);
 router.post('/', AccountController.create);
 router.get('/:id/expenses', AccountController.getAllExpenses);
 router.post('/:id/expenses', AccountController.createExpense);

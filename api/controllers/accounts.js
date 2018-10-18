@@ -69,6 +69,37 @@ exports.create = async (req, res) => {
   }
 }
 
+exports.update = async (req, res) => {  
+  try {
+    const accountId = req.params.id;
+    const accountUpdateOpts = {};
+  
+    for (const op of req.body) {
+      if (op.propName === 'spenders') {
+        accountUpdateOpts[op.propName] = op.value.map(sp => {
+          return Types.ObjectId(sp.value);
+        });
+      } else {
+        accountUpdateOpts[op.propName] = op.value;
+      }
+    };
+
+    const updateOpts = {
+      $set: accountUpdateOpts
+    }
+
+    await accountDb.update(accountId, updateOpts);
+
+    res.status(OK).json({
+      message: 'La cuenta se actualizó correctamente.'
+    });
+  } catch (err) {
+    res.status(INTERNAL_SERVER_ERROR).json({
+      message: 'Ocurrió un error al intentar actualizar la cuenta.'
+    });
+  }
+}
+
 exports.createExpense = async (req, res) => {
   const accountId = req.params.id
   
@@ -82,10 +113,12 @@ exports.createExpense = async (req, res) => {
   try {
     const createdExpense = await expenseDb.create(expenseData);
     const account = await accountDb.getById(accountId);
-    const accountOpt = {
-      amount: account.amount - createdExpense.amount
+    const updateOpt = {
+      $set: {
+        amount: account.amount - createdExpense.amount
+      }
     };
-    await accountDb.update(accountId, accountOpt);
+    await accountDb.update(accountId, updateOpt);
     
     res.status(OK).json({
       message: '¡Gasto creado con éxito!',

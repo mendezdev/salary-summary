@@ -21,6 +21,6 @@ exports.create = accountData => {
 exports.update = (id, updateOps) => {
   return Account.update(
     { _id: id },
-    { $set: updateOps }
+    updateOps
   ).exec();
 }
