@@ -14,5 +14,16 @@
     "no-console": 1,
     "semi": ["error", "always"]
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "overrides": [
+    {
+      "files": ["*.test.js"],
+      "rules": {
+        "no-unused-expressions": "off",
+        "no-undef": "off",
+        "quotes": "off",
+        "semi": "off"
+      }
+    }
+  ]
 }
