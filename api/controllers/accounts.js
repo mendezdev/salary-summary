@@ -16,7 +16,7 @@ exports.get = async (req, res) => {
       }
     });
   }
-}
+};
 
 exports.getById = async (req, res) => {
   try {
@@ -30,7 +30,7 @@ exports.getById = async (req, res) => {
       }
     });
   }
-}
+};
 
 exports.create = async (req, res) => {
   const {
@@ -40,13 +40,13 @@ exports.create = async (req, res) => {
   let accountData = {
     name,
     amount
-  }
+  };
 
-  let idSpenders = null
+  let idSpenders = null;
   if (spenders) {
     if (spenders.length > 0) {
       idSpenders = spenders.map(id => {
-        return Types.ObjectId(id)
+        return Types.ObjectId(id);
       });
     }
   }
@@ -67,7 +67,7 @@ exports.create = async (req, res) => {
       error: err
     });
   }
-}
+};
 
 exports.update = async (req, res) => {  
   try {
@@ -82,11 +82,11 @@ exports.update = async (req, res) => {
       } else {
         accountUpdateOpts[op.propName] = op.value;
       }
-    };
+    }
 
     const updateOpts = {
       $set: accountUpdateOpts
-    }
+    };
 
     await accountDb.update(accountId, updateOpts);
 
@@ -98,10 +98,10 @@ exports.update = async (req, res) => {
       message: 'Ocurrió un error al intentar actualizar la cuenta.'
     });
   }
-}
+};
 
 exports.createExpense = async (req, res) => {
-  const accountId = req.params.id
+  const accountId = req.params.id;
   
   const expenseData = {
     amount: req.body.amount,
@@ -128,9 +128,9 @@ exports.createExpense = async (req, res) => {
     res.status(INTERNAL_SERVER_ERROR).json({
       message: 'Ocurrió un error al intentar crear el gasto.',
       error: err
-    })
+    });
   }
-}
+};
 
 exports.getAllExpenses = async (req, res) => {
   try {
@@ -144,4 +144,4 @@ exports.getAllExpenses = async (req, res) => {
       }
     });
   }
-}
+};

@@ -7,12 +7,12 @@ exports.saveUser = userData => {
     ...userData
   });
   return user.save();
-}
+};
 
 exports.getAll = () => {
   return User.find();
-}
+};
 
 exports.getUserByEmail = email => {
   return User.findOne({ email });
-}
+};

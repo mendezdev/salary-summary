@@ -8,8 +8,8 @@ exports.create = expenseData => {
   });
 
   return expense.save();
-}
+};
 
 exports.getByAccountId = (accountId) => {
   return Expense.find({ accountId });
-}
+};

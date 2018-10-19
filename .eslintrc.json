@@ -11,6 +11,8 @@
   "rules": {
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
+    "no-console": 1,
     "semi": ["error", "always"]
-  }
+  },
+  "parser": "babel-eslint"
 }
