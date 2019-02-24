@@ -106,7 +106,7 @@ exports.createExpense = async (req, res) => {
   const expenseData = {
     amount: req.body.amount,
     description: req.body.description,
-    userInformation: req.body.userInformation,
+    userId: req.body.userId,
     accountId 
   };
 
