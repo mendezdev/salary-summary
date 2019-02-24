@@ -6,7 +6,10 @@ exports.getAll = () => {
 };
 
 exports.getById = (id) => {
-  return Account.findOne({ _id: id }).exec();
+  return Account
+    .findOne({ _id: id })
+    .populate('spenders', 'username email')
+    .exec();
 };
 
 exports.create = accountData => {
