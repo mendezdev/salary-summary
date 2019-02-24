@@ -11,15 +11,10 @@ const expenseSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  userInformation: {
-    email: {
-      type: String,
-      required: true
-    },
-    username: {
-      type: String,
-      required: true
-    }
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
   accountId: {
     type: mongoose.Schema.Types.ObjectId,
