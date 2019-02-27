@@ -11,5 +11,7 @@ exports.create = expenseData => {
 };
 
 exports.getByAccountId = (accountId) => {
-  return Expense.find({ accountId });
+  return Expense
+    .find({ accountId })
+    .populate('user', 'username email');
 };
