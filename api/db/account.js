@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const Account = require('../models/account');
 
-exports.getAll = () => {
-  return Account.find().populate('spenders', 'username email');
+exports.getAll = (userId) => {
+  return Account.find({
+    spenders: userId
+  }).populate('spenders', 'username email');
 };
 
 exports.getById = (id) => {

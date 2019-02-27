@@ -6,7 +6,7 @@ const expenseDb = require('../db/expense');
 
 exports.get = async (req, res) => {
   try {
-    const accounts = await accountDb.getAll();
+    const accounts = await accountDb.getAll(req.userData.userId);
     res.status(OK).json(accounts);
   } catch (err) {
     res.status(INTERNAL_SERVER_ERROR).json({
