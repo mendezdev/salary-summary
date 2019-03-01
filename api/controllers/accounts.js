@@ -3,6 +3,7 @@ const { Types } = require('mongoose');
 
 const accountDb = require('../db/account');
 const expenseDb = require('../db/expense');
+const sgMail = require('../common/sendgrid');
 
 exports.get = async (req, res) => {
   try {
@@ -119,6 +120,16 @@ exports.createExpense = async (req, res) => {
       }
     };
     await accountDb.update(accountId, updateOpt);
+    const msg = {
+      to: req.userData.email,
+      body: {
+        username: req.userData.username,
+        amount: expenseData.amount,
+        description: expenseData.description
+      }
+    }
+
+    const sgResult = await sgMail.send('EXPENSE_CREATED', msg);
     
     res.status(OK).json({
       message: '¡Gasto creado con éxito!',
